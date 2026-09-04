@@ -273,7 +273,7 @@ width: 70%;
 
 .movie-grid{
   width: calc(100% - 60px);
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 30px auto 10px;
 
   display: grid;
@@ -344,6 +344,12 @@ width: 70%;
   background-color: hsl(247, 74%, 63%);
   cursor: pointer;
 }
+
+.popular-section{
+  width: calc(100% - 60px);
+  max-width: 1100px;
+  margin: 40px auto 0;
+}
 .section-header{
   display: flex;
   justify-content: space-between;
@@ -352,7 +358,7 @@ width: 70%;
 }
 
 .section-header h2{
-  margin: auto 40px;
+  margin: 0;
 }
 
 .see-all-link{
