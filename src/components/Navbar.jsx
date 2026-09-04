@@ -1,4 +1,4 @@
-
+import {User} from "lucide-react";
 
 function Navbar(){
 
@@ -16,9 +16,9 @@ function Navbar(){
                 <a href="#">Listelerim</a>
             </div>         
 
-            <div className="profile">
-                <span>👤</span>
-            </div>
+            <button className="profile-button">
+                <User size={18} />
+            </button>
             
         </nav>
     );

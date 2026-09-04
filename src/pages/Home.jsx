@@ -20,7 +20,7 @@ function Home(){
 
             <section className="popular-section">
                 <div className="section-header">
-                    <h2>Popüer Filmler</h2>             
+                    <h2>Popüler Filmler</h2>             
                 </div> 
 
             </section>
