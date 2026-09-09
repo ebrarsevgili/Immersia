@@ -1,4 +1,5 @@
 import { Heart, Star } from "lucide-react";
+import "./MovieCard.css";
 
 function MovieCard({movie}){
     

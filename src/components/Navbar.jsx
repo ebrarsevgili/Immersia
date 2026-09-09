@@ -1,4 +1,5 @@
 import {User} from "lucide-react";
+import "./Navbar.css";
 
 function Navbar(){
 

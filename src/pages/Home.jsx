@@ -1,9 +1,32 @@
+import "./Home.css";
 import { Search } from "lucide-react";
 import HeroSlider from "../components/HeroSlider";
-import movies from "../data/movie";
 import MovieCard from "../components/MovieCard";
+import { useEffect, useState } from "react";
 
 function Home(){
+    const [movies , setMovies] = useState([]);
+
+/*     useEffect(()=>{
+        fetch("http://localhost:8080/api/movies")
+        .then(response => response.json())
+        .then(data =>{
+            setMovies(data);
+        });
+    },[]); */
+
+        useEffect(() => {
+        fetch("http://localhost:8080/api/movies")
+            .then(response => {
+                console.log("STATUS:", response.status);
+                return response.json();
+            })
+            .then(data => {
+        console.log("API DATA:", data);
+        console.log("IS ARRAY:", Array.isArray(data));
+        setMovies(data);
+    });
+    }, []);
 
     return(
         <main className="home">
@@ -18,7 +41,7 @@ function Home(){
 
             </div>
         
-            <HeroSlider />
+            <HeroSlider movies={movies} />
 
             <section className="popular-section">
                 <div className="section-header">

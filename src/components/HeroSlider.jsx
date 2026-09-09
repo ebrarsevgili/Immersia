@@ -1,13 +1,10 @@
 import { useEffect , useState } from "react";
-import movies from "../data/movie";
 import { ChevronLeft ,ChevronRight } from "lucide-react";
+import "./HeroSlider.css";
 
-function HeroSlider(){
+function HeroSlider({ movies }){
 
     const [currentIndex , setCurrentIndex] = useState(0);
-
-    const currentMovie = movies[currentIndex];
-    console.log(currentMovie);
 
     function nextSlide(){
         setCurrentIndex((currentIndex) => {
@@ -29,22 +26,33 @@ function HeroSlider(){
 
     useEffect(() => {
 
-        const interval = setInterval(() => {
-            nextSlide();
-        } , 5000);
+    if (movies.length <= 1) {
+        return;
+    }
 
-        return () => {
-            clearInterval(interval);
-        }
+    const interval = setInterval(() => {
+        nextSlide();
+    }, 5000);
 
-    }, []);
+    return () => {
+        clearInterval(interval);
+    };
+
+}, [movies.length]);
+
+    if (movies.length === 0) {
+        return null;
+    }
+
+    const currentMovie = movies[currentIndex];
+    
 
     return(
         <section className="hero">
                 <div 
                     className="hero-background" 
                     style={{
-                        backgroundImage:`url(${currentMovie.image})`
+                        backgroundImage:`url(${currentMovie.backdropImage})`
                     
                     }}
                 />
@@ -57,9 +65,7 @@ function HeroSlider(){
                 <div className="hero-meta">
                     <span>{currentMovie.year}</span>
                     <span>•</span>
-                    <span>{currentMovie.duration}</span>
-                    <span>•</span>
-
+                    
                     <span className="hero-rating">
                         ⭐ {currentMovie.rating}
                     </span>
