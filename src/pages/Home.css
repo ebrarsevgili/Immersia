@@ -71,11 +71,11 @@
 }
 
 .movie-grid{
-  width: calc(100% - 60px);
-  max-width: 1200px;
+  width: calc(100% - 40px);
+  max-width: none;
   margin: 30px auto 10px;
 
   display: grid;
-  grid-template-columns: repeat(6,1fr);
-  gap: 20px;
+  grid-template-columns: repeat(5,1fr);
+  gap: 24px;
 }

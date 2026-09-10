@@ -2,7 +2,7 @@
     position: relative;
 
     width: 80%;
-    height: 400px;
+    height: 500px;
      
     margin: 30px auto 50px;
 
@@ -55,6 +55,7 @@
 }
 .hero-rating {
     color: hsl(44, 90%, 61%);
+    size: 20px;
 }
 .hero-content p{
    display: -webkit-box;
@@ -63,9 +64,9 @@
     overflow: hidden;
     margin: 0;
     color: hsl(240, 10%, 78%);
-    font-size: 14px;
+    font-size: 20px;
     line-height: 1.8;
-    width: 70%;
+    width: 90%;
 
 }
 .detail-button{
