@@ -26,8 +26,9 @@
 
   font-size: 20px;
 }
-.search-box input::placeholder{
-  color: hsl(240, 8%, 50%);
+.search-box {
+    position: relative;
+    z-index: 10;
 }
 .search-box button{
   width: 60px;

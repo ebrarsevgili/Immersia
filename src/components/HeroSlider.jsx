@@ -23,6 +23,7 @@ function HeroSlider({ movies }){
             return currentIndex - 1 ;
         })
     }
+    
 
     useEffect(() => {
 
@@ -40,12 +41,18 @@ function HeroSlider({ movies }){
 
 }, [movies.length]);
 
+    useEffect(() => {
+            setCurrentIndex(0);
+    }, [movies]);
+
     if (movies.length === 0) {
         return null;
     }
 
     const currentMovie = movies[currentIndex];
     
+        
+        
 
     return(
         <section className="hero">

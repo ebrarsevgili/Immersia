@@ -3,20 +3,27 @@ import "./MovieCard.css";
 import { Link } from "react-router-dom";
 
 function MovieCard({ movie }) {
+  console.log("MOVIE IMAGE:", movie.image);
   return (
     <article className="movie-card">
-        
-      <Link to={`/movies/${movie.id}`} className="movie-card-link">
-        <div className="movie-poster">
-          <img src={movie.image} alt={movie.title} />
-          <button
-            className="favorite-button"
-            aria-label={`${movie.title} favorilere ekle`}
-          >
-            <Heart size={18} />
-          </button>
-        </div>
-      </Link>
+      <div className="movie-poster">
+        <Link 
+          to={`/movies/${movie.id}`} 
+          className="movie-card-link"
+        >
+            <img 
+              src={movie.image} 
+              alt={movie.title}               
+            />
+        </Link >
+
+        <button
+          className="favorite-button"
+          aria-label={`${movie.title} favorilere ekle`}
+        >
+          <Heart size={18} />
+        </button>
+      </div>
 
       <div className="movie-info">
         <h3>{movie.title}</h3>
