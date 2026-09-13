@@ -10,7 +10,7 @@ function Home() {
   const [searchResults, setSearchResults] = useState([]);
   const [isSearchMode, setIsSearchMode] = useState(false);
 
-
+ 
   useEffect(() => {
   fetch("http://localhost:8080/api/movies")
     .then((response) => response.json())
