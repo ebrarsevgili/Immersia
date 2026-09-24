@@ -69,20 +69,31 @@
     width: 90%;
 
 }
-.detail-button{
-    margin-top: 20px;
-    padding: 10px 16px;
+.detail-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 24px;
+
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
 
     background-color: hsl(247, 74%, 63%);
     color: hsl(0, 0%, 100%);
 
-    font-size: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+
+    text-decoration: none;
     cursor: pointer;
+
+    transition: 0.3s;
 }
+
 .detail-button:hover {
-    background-color: hsl(247, 74%, 53%);  
+    background-color: hsl(247, 74%, 53%);
 }
 .slider-button{
   position: absolute;

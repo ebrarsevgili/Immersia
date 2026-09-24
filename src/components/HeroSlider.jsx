@@ -1,5 +1,6 @@
 import { useEffect , useState } from "react";
 import { ChevronLeft ,ChevronRight } from "lucide-react";
+import {Link} from "react-router-dom";
 import "./HeroSlider.css";
 
 function HeroSlider({ movies }){
@@ -81,7 +82,13 @@ function HeroSlider({ movies }){
                 <p>
                     {currentMovie.description}
                 </p>
-                <button className="detail-button">Detayları Gör </button>
+                <Link 
+                    to={`/movies/${currentMovie.id}`}
+                    className="detail-button"
+                >
+                    Detayları Gör
+                
+                </Link>
 
             </div>
                 
