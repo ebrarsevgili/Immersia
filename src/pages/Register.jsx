@@ -41,7 +41,7 @@ function Register() {
             setEmail("");
             setPassword("");
 
-            navigate("/giris");
+            navigate("/login");
 
         } catch (error) {
             console.error("Kayıt sırasında hata:", error);

@@ -1,27 +1,57 @@
-import {User} from "lucide-react";
+import { User } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
-function Navbar(){
 
-    return(
-        <nav className="navbar">
-            <div className="logo">
-                <span className="logo-icon">◉</span>
-                <span>Immersia</span>
-             </div>
+function Navbar({isLoggedIn}) {
+  const navigate = useNavigate();
 
-            <div className="nav-links">
-                <a href="#">Ana Sayfa</a>
-                <a href="#">Filmler</a>
-                <a href="#">Diziler</a>
-                <a href="#">Listelerim</a>
-            </div>         
+  return (
+    <nav className="navbar">
+      <div className="logo">
+        <span className="logo-icon">◉</span>
+        <span>Immersia</span>
+      </div>
 
-            <button className="profile-button">
-                <User size={18} />
-            </button>
-            
-        </nav>
-    );
+      <div className="nav-links">
+        <a href="#">Ana Sayfa</a>
+        <a href="#">Filmler</a>
+        <a href="#">Diziler</a>
+        <a href="#">Listelerim</a>
+      </div>
+
+      <div className="auth-area">
+        {isLoggedIn ? (
+          <button
+            className="account-button"
+            onClick={() => navigate("/account")}
+          >
+            Hesabım
+          </button>
+        ) : (
+          <div className="auth-links">
+            <button onClick={() => navigate("/login")}>Giriş Yap</button>
+
+            <span>|</span>
+
+            <button onClick={() => navigate("/register")}>Kayıt Ol</button>
+          </div>
+        )}
+
+        <button
+          className="profile-button"
+          onClick={() => {
+            if (isLoggedIn) {
+              navigate("/account");
+            } else {
+              navigate("/login");
+            }
+          }}
+        >
+          <User size={18} />
+        </button>
+      </div>
+    </nav>
+  );
 }
 export default Navbar;

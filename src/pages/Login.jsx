@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-function Login() {
+function Login({onLogin}) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,6 +30,9 @@ function Login() {
       if (!response.ok) {
         throw new Error("Giriş başarısız");
       }
+      const token = await response.text();
+      localStorage.setItem("token" , token);
+      onLogin(true);
       navigate("/");
     } catch (error) {
       setErrorMessage("E-posta veya şifre hatalı.");
