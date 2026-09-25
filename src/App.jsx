@@ -5,6 +5,7 @@ import MovieDetail from "./pages/MovieDetail";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import { useState } from "react";
+import Favorites from "./pages/Favorites";
 
 function App() {
   const [isLoggedIn , setIsLoggedIn] = useState(
@@ -19,6 +20,7 @@ function App() {
         <Route path="/movies/:id" element={<MovieDetail />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login onLogin={setIsLoggedIn}/>} />
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </BrowserRouter>
   );

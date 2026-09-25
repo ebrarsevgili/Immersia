@@ -1,4 +1,4 @@
-import { User } from "lucide-react";
+import { User , Heart} from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
@@ -21,6 +21,14 @@ function Navbar({isLoggedIn}) {
       </div>
 
       <div className="auth-area">
+        <button 
+            className="favorite-nav-button"
+            onClick={() => navigate("/favorites")}
+            aria-label="Favorilerim"
+        >
+            <Heart size={20} />
+        </button>
+
         {isLoggedIn ? (
           <button
             className="account-button"

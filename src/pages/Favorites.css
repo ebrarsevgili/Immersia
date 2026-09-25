@@ -1,0 +1,44 @@
+.favorites-page {
+  min-height: 100vh;
+  padding: 40px 60px;
+  background-color: hsl(240, 33%, 4%);
+  color: hsl(0, 0%, 100%);
+}
+
+.favorites-page h1 {
+  margin-bottom: 10px;
+  font-size: 32px;
+}
+
+.favorites-page p {
+  color: hsl(240, 12%, 65%);
+}
+.favorite-movie-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  margin-top: 30px;
+}
+
+@media (max-width: 1200px) {
+  .favorite-movie-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .favorite-movie-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .favorite-movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.empty-favorites {
+  margin-top: 30px;
+  color: hsl(240, 12%, 65%);
+  font-size: 16px;
+}

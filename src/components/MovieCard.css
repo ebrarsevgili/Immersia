@@ -67,3 +67,6 @@
   background-color: hsl(247, 74%, 63%);
   cursor: pointer;
 }
+.favorite-button.favorite-active {
+  color: hsl(247, 74%, 63%);
+}
