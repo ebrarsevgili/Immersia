@@ -32,6 +32,18 @@ nav{
 .nav-links a:hover{
   color: hsl(0, 0%, 100%);
 }
+.nav-link-button {
+  border: none;
+  background: none;
+  color: hsl(240, 12%, 75%);
+  font: inherit;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-link-button:hover {
+  color: hsl(0, 0%, 100%);
+}
 .profile-button {
   width: 40px;
   height: 40px;

@@ -138,7 +138,8 @@ function MovieDetail() {
         },
       );
       if (response.ok) {
-        (setInWatchlist(false), setWatchlistId(null));
+        setInWatchlist(false);
+         setWatchlistId(null);
       }
       return;
     }
@@ -234,14 +235,13 @@ function MovieDetail() {
                 }`}
                 onClick={handleWatchlist}
               >
-              
+                
                 {isInWatchlist 
                 ? <Minus size={20} /> 
                 : <Plus size={20} />}
                 {isInWatchlist
                   ? "İzleme Listesinden Çıkar"
                   : "İzleme Listeme Ekle"}
-                  
               </button>
 
               <button

@@ -6,6 +6,8 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import { useState } from "react";
 import Favorites from "./pages/Favorites";
+import Watchlist from "./pages/Watchlist";
+import Movies from "./pages/Movies";
 
 function App() {
   const [isLoggedIn , setIsLoggedIn] = useState(
@@ -21,6 +23,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login onLogin={setIsLoggedIn}/>} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="/watchlist" element={<Watchlist />} />
+        <Route path="/movies" element={<Movies />} />
       </Routes>
     </BrowserRouter>
   );

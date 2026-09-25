@@ -14,10 +14,33 @@ function Navbar({isLoggedIn}) {
       </div>
 
       <div className="nav-links">
-        <a href="#">Ana Sayfa</a>
-        <a href="#">Filmler</a>
-        <a href="#">Diziler</a>
-        <a href="#">Listelerim</a>
+        <button
+          className="nav-link-button"
+          onClick={() => navigate("/")}
+        >
+          Ana Sayfa
+        </button>
+
+        <button
+          className="nav-link-button"
+          onClick={() => navigate("/movies")}
+        >
+          Filmler
+        </button>
+
+        <button
+          className="nav-link-button"
+          onClick={() => {}}
+        >
+          Diziler
+        </button>
+
+        <button
+          className="nav-link-button"
+          onClick={() => navigate("/watchlist")}
+        >
+          Listelerim
+        </button>
       </div>
 
       <div className="auth-area">
