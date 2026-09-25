@@ -83,8 +83,7 @@ function Account({onLogout}) {
 
   function handleLogout() {
     localStorage.removeItem("token");
-    onLogout();
-    navigate("/login");
+    window.location.href = "/login";
   }
 
   if (!user) {

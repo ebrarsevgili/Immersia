@@ -4,11 +4,17 @@ import MovieCard from "../components/MovieCard";
 
 function Watchlist() {
   const [movies, setMovies] = useState([]);
-
+  const [error , setError] = useState(() =>
+  localStorage.getItem("token")
+    ? ""
+    : "İzleme listeni görmek için giriş yapmalısın."
+);
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    if (!token) return;
+    if (!token) {
+      return;
+    }
 
     fetch("http://localhost:8080/api/watchlist", {
       headers: {
@@ -23,7 +29,6 @@ function Watchlist() {
         return response.json();
       })
       .then(async (data) => {
-        console.log("WATCHLIST:", data);
 
         const movies = await Promise.all(
           data.map((item) =>
@@ -37,6 +42,7 @@ function Watchlist() {
       })
       .catch((error) => {
         console.error(error);
+        setError("İzleme listesi yüklenirken bir hata oluştu.");
       });
   }, []);
 
@@ -44,7 +50,9 @@ function Watchlist() {
     <main className="watchlist-page">
       <h1>İzleme Listem</h1>
 
-      {movies.length === 0 ? (
+      {error ? (
+        <p className="empty-watchlist">{error}</p>
+      ):movies.length === 0 ? (
         <p className="empty-watchlist">
           Henüz izleme listende film yok.
         </p>

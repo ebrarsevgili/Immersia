@@ -73,3 +73,9 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+.movies-error {
+  margin: 20px 0;
+  text-align: center;
+  color: hsl(0, 70%, 65%);
+  font-size: 15px;
+}

@@ -20,14 +20,12 @@ function MovieDetail() {
     fetch(`http://localhost:8080/api/movies/${id}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log("MOVIE DETAIL:", data);
         setMovie(data);
       });
 
     fetch(`http://localhost:8080/api/movies/${id}/similar`)
       .then((response) => response.json())
       .then((data) => {
-        console.log("SIMILAR MOVIES:", data);
         setSimilarMovies(data);
       });
   }, [id]);

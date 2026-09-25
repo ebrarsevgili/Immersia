@@ -8,7 +8,7 @@
 
     overflow: hidden;
 
-    border: 1px solid #30304A;
+    border: 1px solid hsl(240, 21%, 24%);
     border-radius: 20px;
 }
 .hero-background{

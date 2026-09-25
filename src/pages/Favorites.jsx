@@ -4,9 +4,18 @@ import MovieCard from "../components/MovieCard";
 
 function Favorites() {
   const [favorites, setFavorites] = useState([]);
+  const [error, setError] = useState(()=>
+    localStorage.getItem("token")
+  ? ""
+  : "Favorilerini görmek için giriş yapmalısın"
+);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+
+    if(!token){
+      return;
+    }
 
     fetch("http://localhost:8080/api/favorites", {
       headers: {
@@ -21,7 +30,6 @@ function Favorites() {
         return response.json();
       })
       .then(async (data) => {
-        console.log("FAVORITES:", data);
 
         const movies = await Promise.all(
           data.map((favorite) =>
@@ -34,6 +42,7 @@ function Favorites() {
       })
       .catch((error) => {
         console.error(error);
+        setError("Favoriler yüklenirken bir hata oluştu.");
       });
   }, []);
 
@@ -41,7 +50,9 @@ function Favorites() {
   <main className="favorites-page">
     <h1>Favorilerim</h1>
 
-    {favorites.length === 0 ? (
+    {error ? (
+      <p className="empty-favorites">{error}</p>
+    ):favorites.length === 0 ? (
       <p className="empty-favorites">
         Henüz favori filmin yok.
       </p>

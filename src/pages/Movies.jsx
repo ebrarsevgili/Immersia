@@ -5,10 +5,10 @@ import MovieCard from "../components/MovieCard";
 function Movies() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error , setError] = useState("");
 
   async function loadMovies(pageNumber) {
-    setLoading(true);
 
     try {
       const response = await fetch(
@@ -27,6 +27,7 @@ function Movies() {
       ]);
     } catch (error) {
       console.error(error);
+      setError("Filmler yüklenirken bir hata oluştu.")
     } finally {
       setLoading(false);
     }
@@ -40,12 +41,18 @@ function Movies() {
     const nextPage = page + 1;
 
     setPage(nextPage);
+    setLoading(true);
+    setError("");
     loadMovies(nextPage);
   }
 
   return (
     <main className="movies-page">
       <h1>Filmler</h1>
+
+      {error && (
+        <p className="movies-error">{error}</p>
+      )}
 
       <div className="movies-grid">
         {movies.map((movie) => (

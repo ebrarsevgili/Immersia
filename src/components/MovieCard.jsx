@@ -32,7 +32,7 @@ function MovieCard({ movie }) {
       });
   }, [movie.id]);
 
-  console.log(movie.title, "FAVORITE:", isFavorite);
+ 
 
   async function handleFavorite() {
     const token = localStorage.getItem("token");
