@@ -26,7 +26,7 @@ function App() {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/watchlist" element={<Watchlist />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/account" element={<Account/>} />
+        <Route path="/account" element={<Account onLogout= {()=> setIsLoggedIn(false)}/>} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,9 +1,8 @@
-import { User , Heart} from "lucide-react";
+import { User, Heart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
-
-function Navbar({isLoggedIn}) {
+function Navbar({ isLoggedIn }) {
   const navigate = useNavigate();
 
   return (
@@ -14,25 +13,12 @@ function Navbar({isLoggedIn}) {
       </div>
 
       <div className="nav-links">
-        <button
-          className="nav-link-button"
-          onClick={() => navigate("/")}
-        >
+        <button className="nav-link-button" onClick={() => navigate("/")}>
           Ana Sayfa
         </button>
 
-        <button
-          className="nav-link-button"
-          onClick={() => navigate("/movies")}
-        >
+        <button className="nav-link-button" onClick={() => navigate("/movies")}>
           Filmler
-        </button>
-
-        <button
-          className="nav-link-button"
-          onClick={() => {}}
-        >
-          Diziler
         </button>
 
         <button
@@ -44,12 +30,12 @@ function Navbar({isLoggedIn}) {
       </div>
 
       <div className="auth-area">
-        <button 
-            className="favorite-nav-button"
-            onClick={() => navigate("/favorites")}
-            aria-label="Favorilerim"
+        <button
+          className="favorite-nav-button"
+          onClick={() => navigate("/favorites")}
+          aria-label="Favorilerim"
         >
-            <Heart size={20} />
+          <Heart size={20} />
         </button>
 
         {isLoggedIn ? (

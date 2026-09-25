@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import "./Account.css";
 
-function Account() {
+function Account({onLogout}) {
   const [user, setUser] = useState(null);
   const [favorites, setFavorites] = useState([]);
   const [watchlist, setWatchlist] = useState([]);
@@ -83,6 +83,7 @@ function Account() {
 
   function handleLogout() {
     localStorage.removeItem("token");
+    onLogout();
     navigate("/login");
   }
 
