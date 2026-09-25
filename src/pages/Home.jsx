@@ -3,6 +3,8 @@ import { Search } from "lucide-react";
 import HeroSlider from "../components/HeroSlider";
 import MovieCard from "../components/MovieCard";
 import { useEffect, useState } from "react";
+import {Link} from "react-router-dom"
+
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -75,9 +77,10 @@ function handleSearch() {
             <div className="section-header">
               <h2>Popüler Filmler</h2>
 
-              <a href="#" className="see-all-link">
+              <Link to="/movies" className="see-all-link">
                 Tümünü Gör
-              </a>
+              </Link>
+              
             </div>
 
             <div className="movie-grid">
