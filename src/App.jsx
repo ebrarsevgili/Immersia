@@ -8,6 +8,7 @@ import { useState } from "react";
 import Favorites from "./pages/Favorites";
 import Watchlist from "./pages/Watchlist";
 import Movies from "./pages/Movies";
+import Account from "./pages/Account";
 
 function App() {
   const [isLoggedIn , setIsLoggedIn] = useState(
@@ -25,6 +26,7 @@ function App() {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/watchlist" element={<Watchlist />} />
         <Route path="/movies" element={<Movies />} />
+        <Route path="/account" element={<Account/>} />
       </Routes>
     </BrowserRouter>
   );
