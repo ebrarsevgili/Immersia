@@ -438,7 +438,23 @@ On Windows PowerShell:
 
 ---
 
-## Screenshots
+## Screenshots## Screenshots
+
+### Home
+
+![Immersia Home](screenshots/home.png)
+
+### Movie Details
+
+![Immersia Movie Details](screenshots/movie-detail.png)
+
+### Login
+
+![Immersia Login](screenshots/login.png)
+
+### Account
+
+![Immersia Account](screenshots/account.png)
 
 Screenshots can be added here to document the main parts of the application.
 
