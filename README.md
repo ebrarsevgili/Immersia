@@ -1,474 +1,582 @@
-# 🎬 Immersia
+# Immersia
 
-### Full-Stack Movie Discovery Platform
+Immersia is a full-stack movie platform built with **React** and **Spring Boot**.  
+The application retrieves movie data from **TMDB** through the backend and provides authentication, favorites, watchlist, movie search, movie details, and similar movie recommendations.
 
-Immersia is a full-stack movie discovery platform built with React, Java
-Spring Boot, and PostgreSQL.
+---
 
-The application allows users to discover movies, search for titles, view
-detailed movie information, manage favorites and watchlists, and
-securely access their personal account through JWT-based authentication.
+## Table of Contents
 
-------------------------------------------------------------------------
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Quick Start](#quick-start)
+  - [Prerequisites](#prerequisites)
+  - [Backend Setup](#backend-setup)
+  - [Frontend Setup](#frontend-setup)
+- [Repository Structure](#repository-structure)
+- [Architecture Overview](#architecture-overview)
+- [Authentication](#authentication)
+- [TMDB Integration](#tmdb-integration)
+- [API Endpoints](#api-endpoints)
+  - [Authentication Routes](#authentication-routes)
+  - [Movie Routes](#movie-routes)
+  - [Favorites Routes](#favorites-routes)
+  - [Watchlist Routes](#watchlist-routes)
+- [Environment Variables](#environment-variables)
+- [Database](#database)
+- [Testing](#testing)
+- [Screenshots](#screenshots)
+- [Future Improvements](#future-improvements)
+- [Developer Checklist](#developer-checklist)
+- [Common Pitfalls](#common-pitfalls)
+- [License](#license)
 
-## 📋 Table of Contents
+---
 
--   [Features](#features)
--   [Tech Stack](#tech-stack)
--   [Quick Start](#quick-start)
--   [Environment Variables](#environment-variables)
--   [Repository Structure](#repository-structure)
--   [Architecture Overview](#architecture-overview)
--   [Authentication](#authentication)
--   [TMDB Integration](#tmdb-integration)
--   [API Endpoints](#api-endpoints)
--   [Database](#database)
--   [Testing](#testing)
--   [Screenshots](#screenshots)
--   [Future Improvements](#future-improvements)
--   [Author](#author)
--   [License](#license)
+## Features
 
-------------------------------------------------------------------------
+- User registration and login
+- JWT-based authentication
+- Protected backend endpoints
+- Movie discovery powered by TMDB
+- Paginated movie listing
+- Movie search
+- Movie details
+- Similar movie recommendations
+- Add and remove favorite movies
+- Add and remove movies from a watchlist
+- User account page
+- Responsive React interface
+- REST API architecture
+- PostgreSQL database
+- Backend and frontend separated into independent applications
 
-## ✨ Features
+---
 
-### Movie Discovery
-
--   Browse movies retrieved from TMDB
--   Discover popular movies
--   Search for movies
--   View detailed movie information
--   View similar movies
--   Display movie ratings, release years, posters, and descriptions
-
-### User Features
-
--   User registration
--   User login
--   JWT-based authentication
--   Personal account page
--   Favorite movie management
--   Watchlist management
--   Add and remove movies from favorites
--   Add and remove movies from watchlist
-
-### Backend
-
--   RESTful API
--   JWT authentication and authorization
--   PostgreSQL database integration
--   JPA / Hibernate persistence
--   TMDB API integration
--   Service and repository layer architecture
-
-------------------------------------------------------------------------
-
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 
--   React
--   JavaScript
--   Vite
--   React Router
--   Lucide React
--   CSS
+- React
+- Vite
+- JavaScript
+- React Router
+- Lucide React
 
 ### Backend
 
--   Java
--   Spring Boot
--   Spring Security
--   Spring Data JPA
--   Hibernate
--   JWT
--   REST API
+- Java
+- Spring Boot
+- Spring Web
+- Spring Data JPA
+- Spring Security
+- JWT
+- Hibernate
 
 ### Database
 
--   PostgreSQL
+- PostgreSQL
 
 ### External API
 
--   TMDB API
+- TMDB API
 
 ### Testing
 
--   JUnit
--   Mockito
--   MockMvc
--   Spring Boot Test
+- JUnit
+- Mockito
+- Spring Boot Test
 
-### Development Tools
+---
 
--   Git
--   GitHub
--   IntelliJ IDEA
--   Visual Studio Code
+## Quick Start
 
-------------------------------------------------------------------------
+Immersia consists of two applications:
 
-## 🚀 Quick Start
+- `frontend` — React/Vite application
+- `backend` — Spring Boot REST API
+
+Run the backend and frontend separately during development.
 
 ### Prerequisites
 
-Before running Immersia, make sure you have:
+Make sure the following are installed:
 
--   Java 17+
--   Node.js
--   npm
--   PostgreSQL
--   A TMDB API key
+- Java 17 or later
+- Maven
+- Node.js
+- npm
+- PostgreSQL
+- A TMDB API key
 
-### Backend
+---
 
-Navigate to the backend directory:
+### Backend Setup
 
-``` bash
+Go to the backend directory:
+
+```bash
 cd backend
 ```
 
-Make sure PostgreSQL is running and configure the required environment
-variables.
+Configure the required environment variables:
 
-Start the Spring Boot application:
-
-``` bash
-mvnw.cmd spring-boot:run
-```
-
-The backend runs on:
-
-``` text
-http://localhost:8080
-```
-
-### Frontend
-
-Open a new terminal and navigate to the frontend directory:
-
-``` bash
-cd frontend
-```
-
-Install dependencies:
-
-``` bash
-npm install
-```
-
-Start the development server:
-
-``` bash
-npm run dev
-```
-
-The frontend normally runs on:
-
-``` text
-http://localhost:5173
-```
-
-------------------------------------------------------------------------
-
-## 🔐 Environment Variables
-
-The backend uses environment variables for sensitive configuration
-values.
-
-Required variables:
-
-``` text
+```text
 DB_PASSWORD=your_database_password
 TMDB_API_KEY=your_tmdb_api_key
 JWT_SECRET=your_jwt_secret
 ```
 
-  Variable         Description
-  ---------------- --------------------------------
-  `DB_PASSWORD`    PostgreSQL database password
-  `TMDB_API_KEY`   API key used to access TMDB
-  `JWT_SECRET`     Secret used to sign JWT tokens
+The backend expects PostgreSQL to be available with the database:
 
-Never commit real API keys, passwords, or JWT secrets to GitHub.
+```text
+immersia_db
+```
 
-------------------------------------------------------------------------
+Start the Spring Boot application:
 
-## 🏗️ Repository Structure
+```bash
+./mvnw spring-boot:run
+```
 
-``` text
+On Windows PowerShell, you can also use:
+
+```powershell
+.\mvnw.cmd spring-boot:run
+```
+
+---
+
+### Frontend Setup
+
+Open another terminal and go to the frontend directory:
+
+```bash
+cd frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The Vite development server normally runs on:
+
+```text
+http://localhost:5173
+```
+
+If that port is already in use, Vite may select another available port.
+
+---
+
+## Repository Structure
+
+```text
 Immersia/
 ├── frontend/
 │   ├── public/
 │   ├── src/
 │   │   ├── components/
 │   │   ├── pages/
+│   │   ├── data/
 │   │   ├── App.jsx
-│   │   └── index.css
+│   │   └── main.jsx
 │   ├── package.json
 │   └── vite.config.js
 │
 ├── backend/
 │   ├── src/
 │   │   ├── main/
+│   │   │   └── java/
+│   │   │       └── ...
 │   │   └── test/
 │   ├── pom.xml
-│   └── mvnw.cmd
+│   └── ...
 │
 └── README.md
 ```
 
-------------------------------------------------------------------------
+### Frontend
 
-## 🔄 Architecture Overview
+The frontend contains the user interface, routing, movie pages, authentication pages, account pages, and reusable React components.
 
-Immersia follows a client-server architecture.
+### Backend
 
-``` text
-┌───────────────────────┐
-│    React Frontend     │
-│        Vite           │
-└───────────┬───────────┘
-            │
-            │ REST API
-            ▼
-┌───────────────────────┐
-│    Spring Boot API    │
-│                       │
-│  Controllers          │
-│  Services             │
-│  Repositories         │
-│  Spring Security      │
-│  JWT Authentication   │
-└───────┬─────────┬─────┘
-        │         │
-        ▼         ▼
-┌────────────┐  ┌────────────┐
-│ PostgreSQL │  │  TMDB API  │
-└────────────┘  └────────────┘
+The backend provides REST endpoints, authentication, database access, JWT security, and communication with TMDB.
+
+---
+
+## Architecture Overview
+
+Immersia follows a separated frontend/backend architecture.
+
+```text
+                    ┌─────────────────────┐
+                    │       React         │
+                    │      Frontend       │
+                    └──────────┬──────────┘
+                               │
+                         REST API Calls
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │    Spring Boot      │
+                    │      Backend        │
+                    └──────┬───────┬──────┘
+                           │       │
+                 ┌─────────┘       └─────────┐
+                 ▼                           ▼
+        ┌─────────────────┐         ┌─────────────────┐
+        │   PostgreSQL    │         │     TMDB API    │
+        │    Database     │         │ Movie Data      │
+        └─────────────────┘         └─────────────────┘
 ```
 
-------------------------------------------------------------------------
+### Frontend
 
-## 🔐 Authentication
+The React application handles:
 
-Immersia uses JWT-based authentication with Spring Security.
+- Page rendering
+- Client-side routing
+- Movie browsing
+- Authentication UI
+- Favorites
+- Watchlist
+- Account management
+
+### Backend
+
+The Spring Boot application handles:
+
+- REST API endpoints
+- User registration and login
+- JWT authentication
+- Protected resources
+- PostgreSQL persistence
+- TMDB communication
+- Favorites and watchlist operations
+
+### Database
+
+PostgreSQL stores application-specific data such as users, favorites, and watchlist records.
+
+---
+
+## Authentication
+
+Immersia uses **Spring Security** and **JWT** for authentication.
 
 The authentication flow is:
 
-``` text
+```text
 User
   │
-  ▼
-Register / Login
+  ├── Register/Login
   │
   ▼
 Spring Boot
   │
-  ▼
-JWT Token
+  ├── Validate credentials
+  ├── Hash/check password
+  └── Generate JWT
   │
   ▼
-Frontend stores token
+Frontend
   │
-  ▼
-Authenticated API Request
-  │
-  ▼
+  └── Stores JWT token
+        │
+        ▼
+   Protected API Request
+        │
+        ▼
 JWT Authentication Filter
-  │
-  ▼
-Protected Resource
+        │
+        ▼
+Protected Controller
 ```
 
-Protected resources include:
+The backend uses a stateless security configuration. Protected requests require a valid Bearer token.
 
--   Favorites
--   Watchlist
--   Account information
--   Other authenticated endpoints
+Example header:
 
-------------------------------------------------------------------------
-
-## 🎥 TMDB Integration
-
-Immersia uses the TMDB API as its movie data source.
-
-The frontend does not communicate directly with TMDB.
-
-The backend acts as the API layer between the frontend and TMDB:
-
-``` text
-React
-  │
-  ▼
-Spring Boot
-  │
-  ▼
-TMDB API
-  │
-  ▼
-Spring Boot
-  │
-  ▼
-React
+```text
+Authorization: Bearer <JWT_TOKEN>
 ```
 
-The backend retrieves movie information from TMDB and exposes
-application-specific REST endpoints to the frontend.
+---
 
-------------------------------------------------------------------------
+## TMDB Integration
 
-## 📡 API Endpoints
+Immersia uses TMDB as the external movie data source.
 
-### Authentication
+The frontend does not need to communicate directly with TMDB. Instead, the Spring Boot backend communicates with TMDB and exposes application-specific endpoints to the frontend.
 
-  Method   Endpoint               Description
-  -------- ---------------------- -------------------------
-  POST     `/api/auth/register`   Register a new user
-  POST     `/api/auth/login`      Authenticate a user
-  GET      `/api/auth/me`         Get the current user
-  GET      `/api/auth/test`       Test JWT authentication
+This keeps the TMDB API key on the backend side.
 
-### Movies
+The backend uses TMDB for:
 
-  Method   Endpoint                     Description
-  -------- ---------------------------- ----------------------
-  GET      `/api/movies`                Get paginated movies
-  GET      `/api/movies/{id}`           Get movie details
-  GET      `/api/movies/{id}/similar`   Get similar movies
-  GET      `/api/movies/search`         Search for movies
+- Popular movie discovery
+- Movie details
+- Similar movies
+- Movie search
 
-### Favorites
+---
 
-  Method   Endpoint                             Description
-  -------- ------------------------------------ --------------------------------
-  GET      `/api/favorites`                     Get the user's favorite movies
-  POST     `/api/favorites?movieId={movieId}`   Add a movie to favorites
-  DELETE   `/api/favorites/{id}`                Remove a movie from favorites
+## API Endpoints
 
-### Watchlist
+### Authentication Routes
 
-  ------------------------------------------------------------------------------------
-  Method                  Endpoint                             Description
-  ----------------------- ------------------------------------ -----------------------
-  GET                     `/api/watchlist`                     Get the user's
-                                                               watchlist
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/auth/register` | Register a new user |
+| POST | `/api/auth/login` | Authenticate a user |
+| GET | `/api/auth/me` | Get the current user |
+| GET | `/api/auth/test` | Test JWT authentication |
 
-  POST                    `/api/watchlist?movieId={movieId}`   Add a movie to the
-                                                               watchlist
+### Movie Routes
 
-  DELETE                  `/api/watchlist/{id}`                Remove a movie from the
-                                                               watchlist
-  ------------------------------------------------------------------------------------
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/movies` | Get paginated movies |
+| GET | `/api/movies/{id}` | Get movie details |
+| GET | `/api/movies/{id}/similar` | Get similar movies |
+| GET | `/api/movies/search` | Search for movies |
 
-------------------------------------------------------------------------
+### Favorites Routes
 
-## 🗄️ Database
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/favorites` | Get the user's favorite movies |
+| POST | `/api/favorites?movieId={movieId}` | Add a movie to favorites |
+| DELETE | `/api/favorites/{id}` | Remove a movie from favorites |
 
-Immersia uses PostgreSQL with Spring Data JPA and Hibernate.
+### Watchlist Routes
 
-``` text
-User
- │
- ├── Favorites
- │      └── Movie ID
- │
- └── Watchlist
-        └── Movie ID
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/watchlist` | Get the user's watchlist |
+| POST | `/api/watchlist?movieId={movieId}` | Add a movie to the watchlist |
+| DELETE | `/api/watchlist/{id}` | Remove a movie from the watchlist |
+
+---
+
+## Environment Variables
+
+The backend uses environment variables for sensitive configuration.
+
+| Variable | Description |
+|---|---|
+| `DB_PASSWORD` | PostgreSQL database password |
+| `TMDB_API_KEY` | TMDB API key |
+| `JWT_SECRET` | Secret used for JWT signing |
+
+Example:
+
+```text
+DB_PASSWORD=your_database_password
+TMDB_API_KEY=your_tmdb_api_key
+JWT_SECRET=your_jwt_secret
 ```
 
-The database stores application-specific user data.
+Do not commit real secret values to GitHub.
 
-Movie metadata such as titles, posters, descriptions, ratings, and
-similar movies is retrieved from TMDB.
+Add environment files containing secrets to `.gitignore`.
 
-------------------------------------------------------------------------
+---
 
-## 🧪 Testing
+## Database
 
-The backend contains unit, controller, service, and integration tests.
+Immersia uses PostgreSQL.
 
-### Testing Technologies
+The backend connects to:
 
--   JUnit
--   Mockito
--   MockMvc
--   Spring Boot Test
-
-### Test Coverage
-
-Tests cover areas including:
-
--   User registration
--   User login
--   JWT generation
--   JWT authentication
--   Protected endpoints
--   Favorite operations
--   Watchlist operations
--   Movie endpoints
--   Service layer logic
--   Controller layer behavior
-
-### Run Tests
-
-From the `backend` directory:
-
-``` bash
-mvnw.cmd test
+```text
+jdbc:postgresql://localhost:5432/immersia_db
 ```
 
-------------------------------------------------------------------------
+Application-specific data is persisted through Spring Data JPA and Hibernate.
 
-## 📸 Screenshots
+The database is used for application data such as:
 
-Screenshots of the application will be added here.
+- Users
+- Favorite movies
+- Watchlist entries
+
+Movie information itself is retrieved from TMDB.
+
+---
+
+## Testing
+
+The backend contains tests using:
+
+- JUnit
+- Mockito
+- Spring Boot Test
+
+The test suite covers areas including authentication, JWT security, controllers, services, and protected endpoints.
+
+Run backend tests with:
+
+```bash
+./mvnw test
+```
+
+On Windows PowerShell:
+
+```powershell
+.\mvnw.cmd test
+```
+
+---
+
+## Screenshots
+
+Screenshots can be added here to document the main parts of the application.
+
+Recommended structure:
+
+```text
+screenshots/
+├── home.png
+├── movie-detail.png
+├── login.png
+└── account.png
+```
+
+Example:
+
+```markdown
+## Screenshots
 
 ### Home
 
-*Add screenshot here.*
+![Immersia Home](screenshots/home.png)
 
 ### Movie Details
 
-*Add screenshot here.*
+![Immersia Movie Details](screenshots/movie-detail.png)
 
-### Login / Register
+### Login
 
-*Add screenshot here.*
+![Immersia Login](screenshots/login.png)
 
 ### Account
 
-*Add screenshot here.*
+![Immersia Account](screenshots/account.png)
+```
 
-------------------------------------------------------------------------
+---
 
-## 🔮 Future Improvements
+## Future Improvements
 
-Planned improvements include:
+Possible future improvements include:
 
--   Docker and Docker Compose
--   Improved movie filtering
--   Advanced search functionality
--   Additional user account settings
--   Production deployment
--   Improved UI/UX
--   Additional automated tests
+- More advanced movie filtering
+- Improved movie recommendation features
+- Additional user profile features
+- More comprehensive frontend testing
+- Continuous Integration with GitHub Actions
+- Production deployment
+- Improved API documentation
+- Better error handling and validation
+- Additional movie categories and discovery options
 
-------------------------------------------------------------------------
+---
 
-## 👩‍💻 Author
+## Developer Checklist
 
-**Ebrar Sevgili**
+Before sharing or deploying the project, check the following:
 
-Software Engineering Student
+### Authentication
 
-[GitHub](https://github.com/ebrarsevgili)
+- [ ] Registration works
+- [ ] Login works
+- [ ] JWT is generated correctly
+- [ ] Protected endpoints reject unauthenticated requests
+- [ ] Logout removes the stored token
 
-------------------------------------------------------------------------
+### Movies
 
-## 📄 License
+- [ ] Movie list loads correctly
+- [ ] Movie details load correctly
+- [ ] Movie search works
+- [ ] Similar movies are displayed
+- [ ] TMDB API key is stored securely
+
+### Favorites and Watchlist
+
+- [ ] Movies can be added to favorites
+- [ ] Movies can be removed from favorites
+- [ ] Movies can be added to the watchlist
+- [ ] Movies can be removed from the watchlist
+
+### Database
+
+- [ ] PostgreSQL is running
+- [ ] Database connection works
+- [ ] User data is persisted correctly
+- [ ] Favorite and watchlist data is persisted correctly
+
+### Documentation
+
+- [ ] Quick Start instructions are correct
+- [ ] Environment variables are documented
+- [ ] API endpoints are documented
+- [ ] Screenshots are added
+- [ ] No secret values are committed
+
+---
+
+## Common Pitfalls
+
+### Hardcoding API Keys
+
+Never place real API keys or JWT secrets directly in source code.
+
+Use environment variables instead:
+
+```text
+TMDB_API_KEY=your_tmdb_api_key
+JWT_SECRET=your_jwt_secret
+```
+
+### Forgetting the Database
+
+The backend requires PostgreSQL to be running and configured with the expected database connection.
+
+### Running Only the Frontend
+
+Immersia uses a separate backend API. Start both applications during development:
+
+```text
+Backend  → Spring Boot
+Frontend → Vite
+```
+
+### Invalid or Missing JWT
+
+Protected endpoints require a valid Bearer token:
+
+```text
+Authorization: Bearer <JWT_TOKEN>
+```
+
+### Exposing Backend Secrets
+
+Do not commit `.env` files or real secret values to the repository.
+
+---
+
+## License
 
 This project is created for educational and portfolio purposes.
 
