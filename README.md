@@ -27,8 +27,6 @@ The application retrieves movie data from **TMDB** through the backend and provi
 - [Testing](#testing)
 - [Screenshots](#screenshots)
 - [Future Improvements](#future-improvements)
-- [Developer Checklist](#developer-checklist)
-- [Common Pitfalls](#common-pitfalls)
 - [License](#license)
 
 ---
@@ -438,39 +436,6 @@ On Windows PowerShell:
 
 ---
 
-## Screenshots## Screenshots
-
-### Home
-
-![Immersia Home](screenshots/home.png)
-
-### Movie Details
-
-![Immersia Movie Details](screenshots/movie-detail.png)
-
-### Login
-
-![Immersia Login](screenshots/login.png)
-
-### Account
-
-![Immersia Account](screenshots/account.png)
-
-Screenshots can be added here to document the main parts of the application.
-
-Recommended structure:
-
-```text
-screenshots/
-├── home.png
-├── movie-detail.png
-├── login.png
-└── account.png
-```
-
-Example:
-
-```markdown
 ## Screenshots
 
 ### Home
@@ -488,7 +453,6 @@ Example:
 ### Account
 
 ![Immersia Account](screenshots/account.png)
-```
 
 ---
 
@@ -497,98 +461,10 @@ Example:
 Possible future improvements include:
 
 - More advanced movie filtering
-- Improved movie recommendation features
-- Additional user profile features
-- More comprehensive frontend testing
-- Continuous Integration with GitHub Actions
+- Improved recommendation features
+- Comprehensive frontend testing
+- CI/CD with GitHub Actions
 - Production deployment
-- Improved API documentation
-- Better error handling and validation
-- Additional movie categories and discovery options
-
----
-
-## Developer Checklist
-
-Before sharing or deploying the project, check the following:
-
-### Authentication
-
-- [ ] Registration works
-- [ ] Login works
-- [ ] JWT is generated correctly
-- [ ] Protected endpoints reject unauthenticated requests
-- [ ] Logout removes the stored token
-
-### Movies
-
-- [ ] Movie list loads correctly
-- [ ] Movie details load correctly
-- [ ] Movie search works
-- [ ] Similar movies are displayed
-- [ ] TMDB API key is stored securely
-
-### Favorites and Watchlist
-
-- [ ] Movies can be added to favorites
-- [ ] Movies can be removed from favorites
-- [ ] Movies can be added to the watchlist
-- [ ] Movies can be removed from the watchlist
-
-### Database
-
-- [ ] PostgreSQL is running
-- [ ] Database connection works
-- [ ] User data is persisted correctly
-- [ ] Favorite and watchlist data is persisted correctly
-
-### Documentation
-
-- [ ] Quick Start instructions are correct
-- [ ] Environment variables are documented
-- [ ] API endpoints are documented
-- [ ] Screenshots are added
-- [ ] No secret values are committed
-
----
-
-## Common Pitfalls
-
-### Hardcoding API Keys
-
-Never place real API keys or JWT secrets directly in source code.
-
-Use environment variables instead:
-
-```text
-TMDB_API_KEY=your_tmdb_api_key
-JWT_SECRET=your_jwt_secret
-```
-
-### Forgetting the Database
-
-The backend requires PostgreSQL to be running and configured with the expected database connection.
-
-### Running Only the Frontend
-
-Immersia uses a separate backend API. Start both applications during development:
-
-```text
-Backend  → Spring Boot
-Frontend → Vite
-```
-
-### Invalid or Missing JWT
-
-Protected endpoints require a valid Bearer token:
-
-```text
-Authorization: Bearer <JWT_TOKEN>
-```
-
-### Exposing Backend Secrets
-
-Do not commit `.env` files or real secret values to the repository.
 
 ---
 
