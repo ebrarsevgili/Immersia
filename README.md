@@ -10,6 +10,7 @@ The application retrieves movie data from **TMDB** through the backend and provi
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Quick Start](#quick-start)
+  - [Run with Docker](#run-with-docker)
   - [Prerequisites](#prerequisites)
   - [Backend Setup](#backend-setup)
   - [Frontend Setup](#frontend-setup)
@@ -94,7 +95,36 @@ Immersia consists of two applications:
 - `frontend` — React/Vite application
 - `backend` — Spring Boot REST API
 
-Run the backend and frontend separately during development.
+You can start everything with Docker (recommended), or run the backend and frontend separately during development.
+
+### Run with Docker
+
+The only requirements are [Docker](https://www.docker.com/products/docker-desktop/) and a free [TMDB API key](https://www.themoviedb.org/settings/api).
+
+1. Create your environment file from the example:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   On Windows PowerShell: `Copy-Item .env.example .env`
+
+2. Open `.env` and fill in `DB_PASSWORD`, `TMDB_API_KEY` and `JWT_SECRET` (at least 32 characters).
+
+3. Build and start PostgreSQL, the backend and the frontend:
+
+   ```bash
+   docker compose up --build
+   ```
+
+4. Open the app:
+
+   - Frontend: `http://localhost:5173`
+   - API: `http://localhost:8080`
+
+Stop the containers with `Ctrl+C`. Use `docker compose down` to remove them; add `-v` to also delete the database volume.
+
+The frontend runs on port 5173 because the backend only allows CORS requests from that origin.
 
 ### Prerequisites
 
